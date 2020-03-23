@@ -91,7 +91,7 @@ for (let i = 0; i < 3; i++){
 
 function mean(){
     let summ = 0;
-    for (j = 0; j < ages.length; j++){
+    for (let j = 0; j < ages.length; j++){
         summ = summ + parseInt(ages[j]);
     }
     let m = summ/ages.length;
@@ -163,3 +163,44 @@ function squares(){
 }
 
 console.log("Результат возведения в квадрат числовых значений из массива: " + squares());
+
+
+//#12
+let names = [];
+let ages = [];
+
+function mean(n, summ){
+    let m = summ/n;
+    return m;
+}
+
+function name_age(){
+    for (let i = 0; ; i++){
+        names.push(prompt("Your name:"));
+        ages.push(prompt("Your age:"));
+        let con = confirm("Continue?");
+        if (con == false){
+            break;
+        }
+    }
+
+    let n = ages.length;
+    let s = 0;
+    for (let j = 0; j < ages.length; j++){
+        s = s + parseInt(ages[j]);
+    }
+
+    mean = mean(n, s);
+
+    let final = [];
+
+    for (let k = 0; k < names.length; k++){
+        if (ages[k] > mean) {
+            final.push(names[k]);
+        }
+    }
+
+    return final;
+}
+
+console.log(name_age());
