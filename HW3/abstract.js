@@ -1,4 +1,6 @@
+//Mikhail Kiyatkin
 //landscape-in-minimalism generator
+
 let increment = 0.1;
 let timeOffset = 0.01;
 let stride = 20; 
