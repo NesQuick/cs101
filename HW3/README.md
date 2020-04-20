@@ -1,4 +1,4 @@
-# Abstract
+# Abstract.js
 
 ## Landscape-in-minimalism generator 
 
@@ -8,7 +8,7 @@
 
 ***
 
-# Pattern 
+# Pattern.js
 
 ## Egypt pattern 
 
