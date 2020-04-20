@@ -12,4 +12,8 @@ Landscape-in-minimalism generator
 
 Egypt pattern 
 
-![Description] (pattern.PNG)
+***
+
+![Description](pattern.PNG)
+
+***
