@@ -4,7 +4,7 @@
 
 ***
 
-![Description](abstract.PNG)
+![Description](photos/abstract.PNG)
 
 ***
 
@@ -14,6 +14,6 @@
 
 ***
 
-![Description](pattern.PNG)
+![Description](photos/pattern.PNG)
 
 ***
