@@ -1,8 +1,19 @@
+//движение танка
+//стрельба в разработке
 
 let position;
 let velocity;
+let acceleration;
 let angle = 0;
+//let velocityBullet = 40;
+let velocityLimit = 10;
+//let xStride = 0;
+//let yStride = 0;
 let tankSize = 80; //задаем размер танка
+//let state = '';
+let x = 0;
+let y = 0;
+let bulletAngle = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -10,6 +21,7 @@ function setup() {
   
   position = createVector(width/2, height/2); 
   velocity = createVector(0, 0);
+  acceleration = createVector(0, 0);
 }
 
 function draw() {
@@ -20,23 +32,44 @@ function draw() {
   display(); //рисует танк
   checkEdges(); //не дает танку выезжать за границы
   pop();
+  
+  
+//  checkShoot();
+//  if (state == 'shoot' && velocity.x > 0) {
+//    push();
+//    x = position.x;
+//    y = position.y;
+//    bulletAngle = angle;
+//    translate (x, y);
+//    rotate (bulletAngle);
+//    ellipse(xStride, yStride, tankSize/4, tankSize/4);
+//    xStride += velocity;
+//  }
 }
 
 function checkKey() {
   if (keyIsDown(UP_ARROW)) { 
-    velocity = createVector(0, -10);
+    thrust = createVector(0, -0.3);
+    velocity.x = 0; //не дает танку дрифтовать
+    applyThrust(thrust);
     angle = 3*PI/2;
   } 
   else if (keyIsDown(DOWN_ARROW)) { 
-    velocity = createVector(0, 10);  
+    thrust = createVector(0, 0.3);
+    velocity.x = 0;
+    applyThrust(thrust);
     angle = PI/2;
   } 
   else if (keyIsDown(RIGHT_ARROW)) { 
-    velocity = createVector(10, 0); 
+    thrust = createVector(0.3, 0);
+    velocity.y = 0;
+    applyThrust(thrust);
     angle = 0;
   } 
   else if (keyIsDown(LEFT_ARROW)) { 
-    velocity = createVector(-10, 0);  
+    thrust = createVector(-0.3, 0);
+    velocity.y = 0;
+    applyThrust(thrust);
     angle = PI;
   } 
   else {
@@ -44,13 +77,19 @@ function checkKey() {
   }
 }
 
+function applyThrust(thrust) {
+    acceleration.add(thrust);
+}
 
 function update() {
+  velocity.add(acceleration);
+  velocity.limit(velocityLimit);
   position.add(velocity);
+  acceleration.mult(0);
 }
 
 function stop() {
-  velocity.mult(0);
+  velocity.mult(0.5);
 }
 
 
@@ -69,7 +108,7 @@ function display() {
 }
 
 
-function checkEdges() { 
+function checkEdges() {
   if (position.x > width - tankSize/2) {
     position.x = width - tankSize/2;
     velocity.x *= 0;
@@ -87,3 +126,10 @@ function checkEdges() {
     velocity.y *= 0;
   }
 }
+
+//function checkShoot() {
+//  if (keyCode === 32) {
+//    state = 'shoot';
+//  }
+//}
+
