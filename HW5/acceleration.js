@@ -112,16 +112,13 @@ function checkEdges() {
   if (position.x > width - tankSize/2) {
     position.x = width - tankSize/2;
     velocity.x *= 0;
-  }
-  else if (position.x < tankSize/2) {
+  } else if (position.x < tankSize/2) {
     position.x = tankSize/2;
     velocity.x *= 0;
-  }
-    if (position.y > height - tankSize/2) {
+  } else if (position.y > height - tankSize/2) {
     position.y = height - tankSize/2;
     velocity.y *= 0;
-  }
-  else if (position.y < tankSize/2) {
+  } else if (position.y < tankSize/2) {
     position.y = tankSize/2;
     velocity.y *= 0;
   }
