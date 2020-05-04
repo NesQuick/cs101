@@ -34,17 +34,19 @@ function draw() {
   pop();
   
   
-//  checkShoot();
-//  if (state == 'shoot' && velocity.x > 0) {
-//    push();
-//    x = position.x;
-//    y = position.y;
-//    bulletAngle = angle;
-//    translate (x, y);
-//    rotate (bulletAngle);
-//    ellipse(xStride, yStride, tankSize/4, tankSize/4);
-//    xStride += velocity;
-//  }
+  //push();
+  //checkShoot();
+  //if (state == 'shoot') {
+  //  x = Object.freeze(position.x); //попытки зафиксировать координаты танка
+  //  y = Object.freeze(position.y);
+  //  bulletAngle = Object.freeze(angle);
+  //}
+  //push();
+  //translate (x, y);
+  //rotate (bulletAngle);
+  //ellipse(0, 0, tankSize/4, tankSize/4);
+  //pop();
+  //pop();
 }
 
 function checkKey() {
