@@ -3,10 +3,10 @@
 DO NOT FORGET TO UNZIP ARCHIVE BEFORE USING!
 
 ## Menu
-![](Start_game.gif)
+![](gifs/Start_game.gif)
 
 ## Success
-![](Good_end.gif)
+![](gifs/Good_end.gif)
 
 ## Loose
-![](Bad_end.gif)
+![](gifs/Bad_end.gif)
