@@ -1,3 +1,6 @@
+//                                BARBARIUM
+// by Mikhail Kiyatkin
+
 let knight;
 let angle;
 let prevAngle;
@@ -5,11 +8,8 @@ let knightSpeed = 4;
 let knightLives = 3;
 let minusLife;
 let startKnight;
-let startKnightGroup;
 let deadKnight;
-let deadKnightGroup;
 let knightCeleb;
-let celebKnightGroup;
 
 let borderTop;
 let borderBottom;
@@ -49,9 +49,9 @@ let coin;
 let coins;
 let gold = 0;
 let coinStats;
+
 let door;
 
-let pixelFont;
 let backGroundSprite;
 
 let gameName;
@@ -63,15 +63,16 @@ let restartSign;
 let instructions;
 let howMove;
 let howShoot;
+
 let ifStart = 0;
 let firstTry = 1;
 let delayPar = 1;
 let playOst = 1;
 
-
 function preload() {
   pixelFont = loadFont('assets/PressStart2P-Regular.ttf');
   marioFont = loadFont('assets/Mario-Kart-DS.ttf');
+
   soundFormats('mp3', 'wav');
   hit = loadSound('assets/hit.wav');
   coinSound = loadSound('assets/coin.wav');
@@ -83,13 +84,16 @@ function preload() {
   win = loadSound('assets/win.wav');
 }
 
+
 //                                            MAIN
 function setup() {
   createCanvas(1000, 1000);
   createGroups();
+
   startingKnight();
   badEnd();
   goodEnd();
+
   createBackGround();
   createEnemies();
   knightSprite();
@@ -108,7 +112,6 @@ function setup() {
 function draw() {
   if (ifStart == 0) {
     startingPage();
-    //endWell();
   }
   else if (ifStart == 1) {
     levelOne();
@@ -121,24 +124,17 @@ function draw() {
   }
 }
 
-function display() {
-  drawSprites();
-}
-
 function createGroups() {
   borderGroup = new Group();
   axes = new Group();
   skeletons = new Group();
   coins = new Group();
-  startKnightGroup = new Group();
-  deadKnightGroup = new Group();
-  celebKnightGroup = new Group();
 }
 
 
 //                                    LEVELS
 
-function startingPage() {
+function startingPage() { //menu
   background(0);
   gameName = 'BARBARIUM'
   startGame = 'press ENTER to start';
@@ -183,6 +179,7 @@ function startingPage() {
 
   if (keyWentDown(13)) {
     ifStart = 1;
+    ost.setVolume(0.1);
     ost.play();
     startKnight.changeAnimation('nothing');
     anotherAttack = 1;
@@ -199,7 +196,7 @@ function startingPage() {
   }
 }
 
-function endGame() {
+function endGame() { //loosing
   background(0);
   playOst = 1;
   firstTry = 0;
@@ -234,7 +231,7 @@ function endGame() {
   }
 }
 
-function endWell() {
+function endWell() { // winning
   background(0);
   playOst = 1;
   firstTry = 0;
@@ -278,8 +275,8 @@ function endWell() {
 }
 
 
-function levelOne() {
-  display();
+function levelOne() { //level 1
+  drawSprites();
   checkHearts();
   if (trigger == 1) {
     checkKey();
@@ -297,9 +294,10 @@ function levelOne() {
   escape();
 }
 
+
 //                                    SPRITES SECTION
 
-function knightSprite() { //creates main character
+function knightSprite() { //creates main character - Loki
   knight = createSprite(width - borderThickness, height - borderThickness);
   knight.addAnimation('walkingKnightAxeRight', 'assets/knightAxeWalkRight_0001.png', 'assets/knightAxeWalkRight_0008.png');
   knight.addAnimation('walkingKnightAxeLeft', 'assets/knightAxeWalkLeft_0001.png', 'assets/knightAxeWalkLeft_0008.png');
@@ -352,7 +350,7 @@ function enemy(enemyX, enemyY) { //creates a skeleton
   skeletons.add(skeleton);
 }
 
-function createEnemies() {
+function createEnemies() { //adds new mobs
     enemy(borderThickness, 800);
 }
 
@@ -369,11 +367,11 @@ function createAxe() { //creates a moving and rotating axe
   setTimeout(axeUpdate, 1400);
 }
 
-function axeUpdate() {
+function axeUpdate() { //does not allow to throw an infinite number of axes
   nextAxe = 1;
 }
 
-function createCoin() {
+function createCoin() { //creates coins after enemy's deaths
   coin = createSprite(skelDeathX, skelDeathY);
   coin.scale = 2;
   coin.addAnimation('bounce', 'assets/coin_0001.png', 'assets/coin_0008.png');
@@ -382,7 +380,7 @@ function createCoin() {
   coins.add(coin);
 }
 
-function createForestLeft() {
+function createForestLeft() { //left part of the forest section
   forestLeft = createSprite(250, 400);
   forestLeft.scale = 1;
   forestLeft.addAnimation('forest', 'assets/forest_0001.png');
@@ -391,7 +389,7 @@ function createForestLeft() {
   borderGroup.add(forestLeft);
 }
 
-function createForestRight() {
+function createForestRight() { //right part of the forest section
   forestRight = createSprite(750, 400);
   forestRight.scale = 1;
   forestRight.addAnimation('forest', 'assets/forest_0001.png');
@@ -401,7 +399,7 @@ function createForestRight() {
 }
 
 
-function createDoor() {
+function createDoor() { //creates exit 
   door = createSprite(width/2, 24);
   door.scale = 1;
   door.addAnimation('door', 'assets/openDoor_0001.png');
@@ -410,7 +408,7 @@ function createDoor() {
   door.restitution = 0;
 }
 
-function createFenceR1() {
+function createFenceR1() { //fences
   fenceR1 = createSprite(660, 875);
   fenceR1.scale = 1;
   fenceR1.addAnimation('fence', 'assets/fenceRight_0001.png');
@@ -419,7 +417,7 @@ function createFenceR1() {
   borderGroup.add(fenceR1);
 }
 
-function createFenceL1() {
+function createFenceL1() { //fences
   fenceL1 = createSprite(125, 875);
   fenceL1.scale = 1;
   fenceL1.addAnimation('fence', 'assets/fenceLeft_0001.png');
@@ -428,7 +426,7 @@ function createFenceL1() {
   borderGroup.add(fenceL1);
 }
 
-function createFenceR2() {
+function createFenceR2() { //fences
   fenceR2 = createSprite(875, 750);
   fenceR2.scale = 1;
   fenceR2.addAnimation('fence', 'assets/fenceLeft_0001.png');
@@ -437,7 +435,7 @@ function createFenceR2() {
   borderGroup.add(fenceR2);
 }
 
-function createFenceL2() {
+function createFenceL2() { //fences
   fenceL2 = createSprite(340, 750);
   fenceL2.scale = 1;
   fenceL2.addAnimation('fence', 'assets/fenceRight_0001.png');
@@ -446,41 +444,38 @@ function createFenceL2() {
   borderGroup.add(fenceL2);
 }
 
-function createBackGround() {
+function createBackGround() { //background
   backGroundSprite = createSprite(width/2, height/2);
   backGroundSprite.scale = 1;
   backGroundSprite.addAnimation('background', 'assets/backGround_0001.png');
   backGroundSprite.changeAnimation('background');
 }
 
-function startingKnight() {
+function startingKnight() { //Loki animation in menu
   startKnight = createSprite(490, 250);
   startKnight.scale = 1;
   startKnight.addAnimation('standing', 'assets/knightAxe_0001.png', 'assets/knightAxe_0006.png');
   startKnight.addAnimation('nothing', '');
-  startKnightGroup.add(startKnight);
 }
 
-function badEnd() {
+function badEnd() { //Loki animation when loose
   deadKnight = createSprite(480, 250);
   deadKnight.scale = 1;
   deadKnight.addAnimation('death', 'assets/knightEnd_0001.png');
   deadKnight.addAnimation('nothing', '');
-  deadKnightGroup.add(deadKnight);
 }
 
-function goodEnd() {
+function goodEnd() { //Loki animation when win
   knightCeleb = createSprite(480, 250);
   knightCeleb.scale = 1;
   knightCeleb.addAnimation('celebrating', 'assets/knightCeleb_0001.png', 'assets/knightCeleb_0004.png');
   knightCeleb.addAnimation('nothing', '');
-  celebKnightGroup.add(knightCeleb);
 }
 
 
 //                                    MOVEMENT SECTION
 
-function knightInit() {
+function knightInit() { //returns Loki to the initial position
   knight.position.x = width - borderThickness; 
   knight.position.y = height - borderThickness;
   knight.changeAnimation('walkingKnightAxeLeft');
@@ -539,7 +534,7 @@ function skeletonMove() { //desides where skeleton will go
   skeleton.overlap(borderGroup, changeSkelWalk);
 }
 
-function changeSkelWalk() {
+function changeSkelWalk() { //turn skeleton
   if (skelChangeDir == 1) {
     skeletonBackWalk();
   }
@@ -574,7 +569,7 @@ function borderCollide() { //describes interference between sprites
   skeletons.collide(borderGroup);
 }
 
-function skelStop() {
+function skelStop() { //stops skeleton with no turn
   if (skeleton.getDirection() == 0) {
     skeleton.setSpeed(0, 0);
   }
@@ -592,19 +587,19 @@ function shoot() { //throws the axe
     if(angle == 180) {
       axe.changeAnimation('shootingLeft');
     }
-    throwSound.setVolume(1);
+    throwSound.setVolume(0.1);
     throwSound.play();
     axe.setSpeed(6, angle);
   } 
 }
 
-function checkDeath() {
+function checkDeath() { //checks axe overlapping skeleton
   axes.overlap(skeletons, skeletonDeath);
 }
 
-function skeletonDeath(axe, skeleton) {
+function skeletonDeath(axe, skeleton) { //skeleton death
   axe.remove();
-  hit.setVolume(1);
+  hit.setVolume(0.1);
   hit.play();
 
   if (skeleton.getDirection() == 0) {
@@ -624,7 +619,7 @@ function skeletonDeath(axe, skeleton) {
   //setTimeout(createNewEnemy, 800);
 }
 
-function createNewEnemy(){
+function createNewEnemy(){ //generates new skeletons (not used in sketch yet)
   enemy();
   if (skeleton.getDirection() == 0) {
     skeleton.setSpeed(0, 0);
@@ -634,7 +629,7 @@ function createNewEnemy(){
   }
 }
 
-function skeletonRemove() {
+function skeletonRemove() { //skeleton sprite remove
   skelDeathX = skeleton.position.x;
   skelDeathY = skeleton.position.y;
   skelKilled = 1;
@@ -642,19 +637,19 @@ function skeletonRemove() {
   createCoin();
 }
 
-function triggerAttack() {
+function triggerAttack() { //checks Loki overlapping skeleton
   if (trigger == 1) {
     knight.overlap(skeletons, skeletonAttack);
   }
 }
 
-function makeAnotherAttack() {
+function makeAnotherAttack() { //does not allow skeleton to attack infinitely
   if (anotherAttack == 1) {
     skeletonAttack();
   }
 }
 
-function skeletonAttack() {
+function skeletonAttack() { //skeleton attack
   if (skeleton.getDirection() == 0) {
     skeleton.setSpeed(0.1, 0);
   }
@@ -684,11 +679,11 @@ function skeletonAttack() {
   setTimeout(skeletonMove, 1000);
 }
 
-function delayDamage() {
+function delayDamage() { //makes character immune to attack for some time after previous attcks
   knight.overlap(skeletons, dealDamage);
 }
 
-function dealDamage() {
+function dealDamage() { //reduces livies of Loki
   if (anotherAttack == 1) {
     knightLives -= 1;
     setTimeout(dealDamageSound, 300);
@@ -696,16 +691,16 @@ function dealDamage() {
   anotherAttack = 0;
 }
 
-function dealDamageSound() {
+function dealDamageSound() { //delays the sound of the attack
   skelHit.setVolume(1);
   skelHit.play();
 }
 
-function delayAttack() {
+function delayAttack() { //allows skeleton to attack
   anotherAttack = 1;
 }
 
-function afterDamage() {
+function afterDamage() { //Loki getting damage animation
   if (prevAngle == 180) {
     knight.changeAnimation('walkingKnightAxeLeft');
   }
@@ -714,7 +709,7 @@ function afterDamage() {
   }
 }
 
-function checkLife() {
+function checkLife() { //checks if Loki is still alive
   if (knightLives <= 0) {
     knight.setSpeed(0, angle);
     knight.changeAnimation('deathRight');
@@ -726,59 +721,59 @@ function checkLife() {
   }
 }
 
-function knightDead() {
+function knightDead() { //Loki death animation
   if (delayPar == 1) {
     knight.changeAnimation('death');
     setTimeout(moveToBadEnd, 1000);
-    gameOver.setVolume(1);
+    gameOver.setVolume(0.1);
     gameOver.play();
     delayPar = 0;
     setTimeout(soundDelay, 2000);
   }
 }
 
-function moveToBadEnd() {
+function moveToBadEnd() { //triggers the loosing screen
   ifStart = 100;
 }
 
 //                                        GAIN SMTH
-function getCoin() {
+function getCoin() { //Loki getting coins
   knight.overlap(coins, collectCoin);
 }
 
-function collectCoin() {
-  coinSound.setVolume(1);
+function collectCoin() { //getting coins animation
+  coinSound.setVolume(0.1);
   coinSound.play();
   gold += 1;
   coin.remove();
 }
 
-function escape() {
+function escape() { //Loki finding exit
   knight.overlap(door, moveToGoodTime);
 }
 
-function moveToGoodTime() {
+function moveToGoodTime() { //triggers the winning screen
   if (delayPar == 1) {
     setTimeout(moveToGood, 500);
     ost.stop();
-    exit.setVolume(1);
+    exit.setVolume(0.1);
     exit.play();
     delayPar = 0;
     setTimeout(soundDelay, 2000);
   }
 }
 
-function moveToGood() {
+function moveToGood() { //sub function for winning trigger
   ifStart = 101;
   win.play();
 }
 
-function soundDelay() {
+function soundDelay() { //does not allow music to play infinitely
   delayPar = 1;
 }
 
 // Stats
-function createHeart() {
+function createHeart() { //creates lives animation
   heart = createSprite(100, 72);
   heart.scale = 2;
   heart.addAnimation('single', 'assets/hearts_1.png');
@@ -788,7 +783,7 @@ function createHeart() {
   heart.changeAnimation('tripple');
 }
 
-function checkHearts() {
+function checkHearts() { //displays Loki's lives
   if (knightLives == 3) {
     heart.changeAnimation('tripple');
   }
@@ -803,13 +798,13 @@ function checkHearts() {
   }
 }
 
-function score() {
+function score() { //counts gained gold
   textFont(pixelFont, 10);
   fill(0);
   text(gold, 170, borderThickness + 6);
 }
 
-function goldScoreImg() {
+function goldScoreImg() { //draws gold icon
   coinStats = createSprite (160, borderThickness);
   coinStats.scale = 2;
   coinStats.addAnimation('justcoin', 'assets/coin_0001.png');
