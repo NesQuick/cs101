@@ -772,7 +772,7 @@ function soundDelay() { //does not allow music to play infinitely
   delayPar = 1;
 }
 
-// Stats
+//                                         STATS
 function createHeart() { //creates lives animation
   heart = createSprite(100, 72);
   heart.scale = 2;
