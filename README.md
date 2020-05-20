@@ -9,8 +9,10 @@ In this repository you will find my academic works in JavaScript, HTML and CSS.
 * HW5 - basic moving mechanics for games without using extra libraries 
 * HW6 - full arcade game with p5 play library
 
+
+## Enjoy!
 ***
 
-![Description]()
+![dynamic design pattern with noise](motion.gif)
 
 ***
