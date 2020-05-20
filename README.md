@@ -13,6 +13,6 @@ In this repository you will find my academic works in JavaScript, HTML and CSS.
 ## Enjoy!
 ***
 
-![dynamic design pattern with noise](motion.gif)
+![dynamic design pattern with noise](photos/motion.gif)
 
 ***
