@@ -1,6 +1,6 @@
 # Introduction to Computer Science
 
-Here comes some regular paragraph.
+In this repository you will find my academic works in JavaScript, HTML and CSS
 
 List of projects:
 1. p5.js interactive applications
@@ -11,12 +11,6 @@ List of projects:
 
 ***
 
-Place for an image
 ![Description](photos/nar.jpg)
 
 ***
-
-### Students
-|---------|-------|
-|Petrov   |   23  |
-|Ivanov   |   77  |
