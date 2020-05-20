@@ -5,4 +5,4 @@
 3. timeOffset parameter is now multiplied by 0.001 instead of 0.02 (makes motion less rapid and sharp)
 4. Sound added
 
-![Description](motion.PNG)
+![Description](motion.gif)
