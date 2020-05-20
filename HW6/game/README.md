@@ -8,5 +8,5 @@ DO NOT FORGET TO UNZIP ARCHIVE BEFORE USING!
 ## Success
 ![](gifs/Good_end.gif)
 
-## Loose
+## Losing
 ![](gifs/Bad_end.gif)
