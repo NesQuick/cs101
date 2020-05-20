@@ -1,16 +1,16 @@
 # Introduction to Computer Science
 
-In this repository you will find my academic works in JavaScript, HTML and CSS
+In this repository you will find my academic works in JavaScript, HTML and CSS.
 
-List of projects:
-1. p5.js interactive applications
-2. Arduino Fabbots
-3. Leaderboad for Project 1
-4. REST API 
-5. IoT 
+## List of projects:
+HW2 - student rating count
+HW3 - static design patterns
+HW4 - dynamic design patterns with sounds
+HW5 - basic moving mechanics for games without using extra libraries 
+HW6 - full arcade game with p5 play library
 
 ***
 
-![Description](photos/nar.jpg)
+![Description]()
 
 ***
